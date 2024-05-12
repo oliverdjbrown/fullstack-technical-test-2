@@ -1,0 +1,101 @@
+<div class="mb-2 row">
+  <div class="col-4"></div>
+  <div class="col-4 text-center">
+    <button type="button" class="btn btn-primary" (click)="openModal()">Create Application</button>
+  </div>
+  <div class="col-4 text-end">
+    <button type="button" class="btn btn-secondary" (click)="exportToCsv()">Export Data</button>
+  </div>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col" class="click" (click)="sortBy('sales_agent_first_name')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-arrow-down-up"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
+        </svg>
+        Name
+      </th>
+      <th scope="col" class="click" (click)="sortBy('sales_agent_email')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-arrow-down-up"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
+        </svg>
+        Email
+      </th>
+      <th scope="col" class="click" (click)="sortBy('account_type')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-arrow-down-up"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
+        </svg>
+        Account Type
+      </th>
+      <th scope="col" class="click" (click)="sortBy('application_status')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-arrow-down-up"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
+        </svg>
+        Status
+      </th>
+      <th scope="col" class="click" (click)="sortBy('business_category')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor" class="bi bi-arrow-down-up"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5m-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5" />
+        </svg>
+        Business Category
+      </th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (application of applications; track application.id) {
+    <tr>
+      <th scope="row">{{ application.id}}</th>
+      <td>
+        {{application.sales_agent_first_name}}
+        {{application.sales_agent_last_name}}
+      </td>
+      <td>
+        {{application.sales_agent_email}}
+      </td>
+      <td>
+        {{application.account_type}}
+      </td>
+      <td>
+        {{application.application_status}}
+      </td>
+      <td>
+        {{application.business_category}}
+      </td>
+      <td>
+        <button type="button" class="btn btn-primary" (click)="openModal(application)">Edit</button>
+      </td>
+      <td>
+        <button type="button" class="btn btn-danger"
+          (click)="deleteApplication(application.business_application_id)">Delete</button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-between p-2">
+  <ngb-pagination [collectionSize]="collectionSize" [(page)]="offset" [pageSize]="limit"
+    (pageChange)="getApplications()">
+  </ngb-pagination>
+
+  <select class="form-select" style="width: auto" [(ngModel)]="limit" (ngModelChange)="getApplications()">
+    <option [ngValue]="20">20 items per page</option>
+    <option [ngValue]="50">50 items per page</option>
+    <option [ngValue]="100">100 items per page</option>
+  </select>
+</div>

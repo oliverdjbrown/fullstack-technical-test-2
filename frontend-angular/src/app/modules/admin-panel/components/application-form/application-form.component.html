@@ -1,0 +1,59 @@
+<div class="modal-header">
+  <h4 class="modal-title">Application</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="salesAgentForm" class="mt-4 row">
+    <!-- Business Application ID -->
+    <div class="mb-3 col-12">
+      <label for="business_application_id" class="form-label">Business Application ID*</label>
+      <input type="number" class="form-control" id="business_application_id" formControlName="business_application_id">
+    </div>
+
+    <!-- First Name -->
+    <div class="mb-3 col-6">
+      <label for="sales_agent_first_name" class="form-label">First Name*</label>
+      <input type="text" class="form-control" id="sales_agent_first_name" formControlName="sales_agent_first_name">
+    </div>
+
+    <!-- Last Name -->
+    <div class="mb-3 col-6">
+      <label for="sales_agent_last_name" class="form-label">Last Name*</label>
+      <input type="text" class="form-control" id="sales_agent_last_name" formControlName="sales_agent_last_name">
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3 col-12">
+      <label for="sales_agent_email" class="form-label">Email*</label>
+      <input type="email" class="form-control" id="sales_agent_email" formControlName="sales_agent_email">
+    </div>
+
+    <!-- Account Type -->
+    <div class="mb-3 col-6">
+      <label for="account_type" class="form-label">Account Type*</label>
+      <input type="text" class="form-control" id="account_type" formControlName="account_type">
+    </div>
+
+    <div class="mb-3 col-6">
+      <label for="account_type" class="form-label">Application Status*</label>
+      <input type="text" class="form-control" id="account_type" formControlName="application_status">
+    </div>
+
+    <div class="mb-3 col-6">
+      <label for="account_type" class="form-label">Business Category*</label>
+      <input type="text" class="form-control" id="account_type" formControlName="business_category">
+    </div>
+
+    <!-- Form Validation -->
+    <div class="mb-3" *ngIf="salesAgentForm.invalid">
+      <div class="alert alert-danger" role="alert">
+        Fill the required fields
+      </div>
+    </div>
+
+    <div class="text-end">
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary" (click)="saveApplication()">Save</button>
+    </div>
+  </form>
+</div>
